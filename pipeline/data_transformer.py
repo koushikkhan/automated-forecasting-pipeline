@@ -29,19 +29,21 @@ class ProcessData(BaseEstimator, TransformerMixin):
 
         if X[self.col_name].isna().any():
             if self.impute_method == "mean":
-                X = X.assign(target=X[self.col_name].fillna(X[self.col_name].mean()))
+                X = X.assign(y=X[self.col_name].fillna(X[self.col_name].mean()))
             elif self.impute_method == "median":
-                X = X.assign(target=X[self.col_name].fillna(X[self.col_name].median()))
+                X = X.assign(y=X[self.col_name].fillna(X[self.col_name].median()))
             elif self.impute_method == "locf":
-                X = X.assign(target=X[self.col_name].fillna(method ='bfill'))
+                X = X.assign(y=X[self.col_name].fillna(method ='bfill'))
             elif self.impute_method == "nocb":
-                X = X.assign(target=X[self.col_name].fillna(method ='ffill'))
+                X = X.assign(y=X[self.col_name].fillna(method ='ffill'))
             elif self.impute_method == "linear":
-                X = X.assign(target=X[self.col_name].interpolate(method="linear"))
+                X = X.assign(y=X[self.col_name].interpolate(method="linear"))
             elif self.impute_method == "spline":
-                X = X.assign(target=X[self.col_name].interpolate(option="spline"))
+                X = X.assign(y=X[self.col_name].interpolate(option="spline"))
             else:
                 raise(ValueError("method argument is not having a permissible value"))
+        else:
+            X.rename(columns={self.col_name:"y"}, inplace=True)
         
         return X
     

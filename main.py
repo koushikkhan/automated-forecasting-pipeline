@@ -67,12 +67,12 @@ def main():
     try:
         ts_pipeline = Pipeline(
             [
-                ('imputation', ProcessData('value', 'spline')),
-                ('make_stationary', MakeStationary('target', 0.05))
+                ('imputation', ProcessData('value', 'spline'))
             ]
         )
-
+        print("debug-1")
         transformed_df = ts_pipeline.transform(data_ts)
+        print("debug-2")
         logging.info("successfully applied data transformation pipeline")
     except Exception as e:
         print(str(e))
@@ -80,70 +80,95 @@ def main():
 
     # step: 3 - build model
     try:
-        # split data
-        full_data, train, test = train_test_split(
-            data=transformed_df, 
-            response_col="target", 
-            training_perc = 0.8
-        )
-        logging.info("splitting of data is now complete")
+        # # split data
+        # full_data, train, test = train_test_split(
+        #     data=transformed_df, 
+        #     response_col="target", 
+        #     training_perc = 0.8
+        # )
+        # logging.info("splitting of data is now complete")
 
-        visualize_train_test_split(
-            train_df=train, 
-            test_df=test, 
-            path_to_save_fig=os.path.join(output_dir, "figures"), 
-            file_name="splitted_data.png")
-        logging.info("data visualization is ready after splitting the data and saved into output/figures directory")
+        # visualize_train_test_split(
+        #     train_df=train, 
+        #     test_df=test, 
+        #     path_to_save_fig=os.path.join(output_dir, "figures"), 
+        #     file_name="splitted_data.png")
+        # logging.info("data visualization is ready after splitting the data and saved into output/figures directory")
         
-        logging.info("starting auto_arima to find best arima model hyper-parameters")
-        # get hyper-parameters for best model using auto_arima
-        best_model_params = get_best_arima_model(
-            train_df=train
+        # logging.info("starting auto_arima to find best arima model hyper-parameters")
+        # # get hyper-parameters for best model using auto_arima
+        # best_model_params = get_best_arima_model(
+        #     train_df=train
+        # )
+        # logging.info("auto_arima process is now complete")
+
+        # logging.info("starting the build process for best arima model")
+        # # fit best model on full data
+        # best_model = fit_best_arima_model(
+        #     data=full_data,
+        #     best_model_params=best_model_params,
+        #     path_to_save_model=os.path.join(output_dir, "model")
+        # )
+        # logging.info("best arima model is now ready and saved into output/model directory")
+
+
+        # # load model and make forecast
+        # forecast_df = get_forecast_in_dataframe(
+        #     path_to_save_model=os.path.join(output_dir, "model"),
+        #     steps=int(conf["model"]["forecast_period"])
+        # )
+        # logging.info(f'forecasts are now ready with period {conf["model"]["forecast_period"]}')
+
+        # # generate plot with forecast data
+        # visualize_prediction(
+        #     train_df=train,
+        #     test_df=test,
+        #     pred_df=forecast_df,
+        #     title="Out of sample forecast",
+        #     path_to_save_fig=os.path.join(output_dir, "figures"),
+        #     file_name="historical_with_forecast_by_arima.png"
+        # )
+        # logging.info("data visualization is ready with forecasts and saved into output/figures directory")
+
+        # # generate file output
+        # generate_output(
+        #     hist_df=full_data,
+        #     forecast_df=forecast_df,
+        #     path_to_save_op=os.path.join(output_dir, "data"),
+        #     file_name="hist_2022_forecast_2030_arima.csv"
+        # )
+        # logging.info("forecasts with historical data are now combined and saved into output/data directory")
+
+        # build arima model
+        arima_model = ArimaModel(transformed_df, 'y')
+        summary = arima_model.get_best_model(train_perc=0.9)
+        print(summary)
+        arima_model.build_model(path_to_save=os.path.join(output_dir, "model"))
+        result_arima = arima_model.forecast_to_df(steps=8, include_history=True)
+
+        # build prophet model
+        prophet_model_test = ProphetModel(transformed_df, 'y')
+        prophet_model_test.build_model(path_to_save=os.path.join(output_dir, "model"))
+        result_prophet = prophet_model_test.forecast_to_df(steps=8, include_history=True)
+
+        # combine forecasts
+        df_forecast_final = pd.merge(
+            result_arima,
+            result_prophet,
+            on=['ds', 'y'], 
+            how='inner'
         )
-        logging.info("auto_arima process is now complete")
-
-        logging.info("starting the build process for best arima model")
-        # fit best model on full data
-        best_model = fit_best_arima_model(
-            data=full_data,
-            best_model_params=best_model_params,
-            path_to_save_model=os.path.join(output_dir, "model")
-        )
-        logging.info("best arima model is now ready and saved into output/model directory")
-
-
-        # load model and make forecast
-        forecast_df = get_forecast_in_dataframe(
-            path_to_save_model=os.path.join(output_dir, "model"),
-            steps=int(conf["model"]["forecast_period"])
-        )
-        logging.info(f'forecasts are now ready with period {conf["model"]["forecast_period"]}')
-
-        # generate plot with forecast data
-        visualize_prediction(
-            train_df=train,
-            test_df=test,
-            pred_df=forecast_df,
-            title="Out of sample forecast",
-            path_to_save_fig=os.path.join(output_dir, "figures"),
-            file_name="historical_with_forecast_by_arima.png"
-        )
-        logging.info("data visualization is ready with forecasts and saved into output/figures directory")
-
-        # generate file output
-        generate_output(
-            hist_df=full_data,
-            forecast_df=forecast_df,
-            path_to_save_op=os.path.join(output_dir, "data"),
-            file_name="hist_2022_forecast_2030_arima.csv"
-        )
-        logging.info("forecasts with historical data are now combined and saved into output/data directory")
-
+        df_forecast_final['ensemble_forecast'] = df_forecast_final[['yhat_arima', 'yhat_prophet']].mean(axis=1)
+        df_forecast_final.to_csv(
+            os.path.join(
+                output_dir, 
+                "data", 
+                f"forecast_table_{conf['api']['country_code']}_{conf['api']['indicator']}_hist_2022_fc_2030.csv"
+            ), index=False
+        )        
 
     except Exception as e:
         print(str(e))
-
-
 
 
 if __name__ == "__main__":
