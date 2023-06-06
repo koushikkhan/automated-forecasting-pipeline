@@ -46,4 +46,10 @@ Find the descriptions below for all of them.
 
 - `model_utils/model_utils.py`: a module, having separate classes for developing models with ARIMA as well as [fbprophet](https://facebook.github.io/prophet/docs/quick_start.html#python-api) and some standalone utility functions.
 
+- `output/data`: this directory contains the data files that hold actual values and the forecasted values.
+
+- `output/figures`: as the name suggests, it contains figures (visualizations) related to forecasting.
+
+- `output/model`: this directory contains binary files (**.pkl**) of the models that the application has generated. 
+
 That's all, thanks.
