@@ -21,10 +21,6 @@ def make_api_get_call(url):
     return r_dict
 
 
-def browse_pages(data_container):
-    pass
-
-
 def get_api_data_as_json(country_code, indicator, base_url, max_page):
     
     # initialize containers
