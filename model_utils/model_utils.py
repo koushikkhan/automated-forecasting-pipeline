@@ -91,6 +91,39 @@ def generate_output(hist_df, forecast_df, path_to_save_op, file_name):
     forecast_with_history_df.to_csv(os.path.join(path_to_save_op, file_name), index=True)
 
 
+# visualization
+
+def plot_actual_vs_forecast(forecast_df, yhat_arima=False, yhat_prophet=False, yhat_ensemble=False, path_to_save=None):
+    # prepare data for visualization
+    data_viz = forecast_df.copy()
+    data_viz.set_index('ds', inplace=True)
+
+    # plot configurations
+    fig,ax = plt.subplots(figsize=(14,10))
+    kws = dict(marker='o', color='r')
+    ax.plot(data_viz['y'], label="actual", **kws)
+
+    # include series by choice
+    if yhat_arima:
+        ax.plot(data_viz['yhat_arima'], label='ARIMA', ls='--', linewidth=2)
+    
+    if yhat_prophet:
+        ax.plot(data_viz['yhat_prophet'], label='Prophet', ls='-.', linewidth=2)
+    
+    if yhat_ensemble:
+        ax.plot(data_viz['yhat_ensemble'], label='Ensemble', ls='solid', linewidth=2, color='k')
+
+    plt.grid()
+
+    ax.set_title("Actual vs Forecast Data", fontsize=18)
+    ax.legend(loc='upper left')
+    fig.tight_layout()
+
+    if path_to_save is not None:
+        fig2save = fig.get_figure()
+        fig2save.savefig(os.path.join(path_to_save, 'actual_vs_forecast_data.png'))
+
+
 class ArimaModel:
     """
     Helper class to build ARIMA model using auto_arima  

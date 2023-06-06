@@ -22,11 +22,12 @@ logs_dir = os.path.join(root_dir, "logs")
 
 # setup logs
 logging.basicConfig(
-    filename=os.path.join(logs_dir, 'application.log'),
-    filemode="a+",
     level=logging.INFO,
-    format='%(asctime)s %(message)s', 
-    datefmt='%m/%d/%Y %I:%M:%S %p'
+    handlers=[
+        logging.FileHandler(os.path.join(logs_dir, 'application.log'), mode="a+"),
+        logging.StreamHandler()
+    ],
+    format="%(asctime)s [%(levelname)s] %(message)s"
 )
 
 # read conf file
@@ -140,32 +141,47 @@ def main():
         # logging.info("forecasts with historical data are now combined and saved into output/data directory")
 
         # build arima model
+        logging.info("initializing ARIMA model")
         arima_model = ArimaModel(transformed_df, 'y')
         summary = arima_model.get_best_model(train_perc=0.9)
+        logging.info("started building ARIMA model")
+        logging.info("printing summary for auto_arima on console")
         print(summary)
         arima_model.build_model(path_to_save=os.path.join(output_dir, "model"))
+        logging.info("started building best ARIMA model")
+        logging.info("built best ARIMA model successfully")
         result_arima = arima_model.forecast_to_df(steps=8, include_history=True)
+        logging.info("started compiling forecast data")
+        logging.info("forecasts have been compiled successfully")
 
         # build prophet model
         prophet_model_test = ProphetModel(transformed_df, 'y')
         prophet_model_test.build_model(path_to_save=os.path.join(output_dir, "model"))
         result_prophet = prophet_model_test.forecast_to_df(steps=8, include_history=True)
 
-        # combine forecasts
+        # generate visualizations & reports
         df_forecast_final = pd.merge(
             result_arima,
             result_prophet,
             on=['ds', 'y'], 
             how='inner'
         )
-        df_forecast_final['ensemble_forecast'] = df_forecast_final[['yhat_arima', 'yhat_prophet']].mean(axis=1)
+        df_forecast_final['yhat_ensemble'] = df_forecast_final[['yhat_arima', 'yhat_prophet']].mean(axis=1)
         df_forecast_final.to_csv(
             os.path.join(
                 output_dir, 
                 "data", 
                 f"forecast_table_{conf['api']['country_code']}_{conf['api']['indicator']}_hist_2022_fc_2030.csv"
             ), index=False
-        )        
+        )
+
+        plot_actual_vs_forecast(
+            df_forecast_final, 
+            yhat_arima=True, 
+            yhat_prophet=True, 
+            yhat_ensemble=True, 
+            path_to_save=os.path.join(output_dir, "figures")
+        )
 
     except Exception as e:
         print(str(e))

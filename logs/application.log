@@ -1,30 +1,15 @@
-06/05/2023 11:59:30 PM successfully extracted data from api
-06/05/2023 11:59:30 PM successfully parsed api output, found 63 many records
-06/06/2023 12:01:21 AM successfully extracted data from api
-06/06/2023 12:01:21 AM successfully parsed api output, found 63 many records
-06/06/2023 12:01:44 AM successfully extracted data from api
-06/06/2023 12:01:44 AM successfully parsed api output, found 63 many records
-06/06/2023 12:03:03 AM successfully extracted data from api
-06/06/2023 12:03:03 AM successfully parsed api output, found 63 many records
-06/06/2023 12:03:03 AM successfully applied data transformation pipeline
-06/06/2023 12:04:05 AM successfully extracted data from api
-06/06/2023 12:04:05 AM successfully parsed api output, found 63 many records
-06/06/2023 12:04:05 AM successfully applied data transformation pipeline
-06/06/2023 12:05:18 AM successfully extracted data from api
-06/06/2023 12:05:18 AM successfully parsed api output, found 63 many records
-06/06/2023 12:05:18 AM successfully applied data transformation pipeline
-06/06/2023 12:06:29 AM successfully extracted data from api
-06/06/2023 12:06:29 AM successfully parsed api output, found 63 many records
-06/06/2023 12:06:29 AM successfully applied data transformation pipeline
-06/06/2023 12:06:30 AM cmd: where.exe tbb.dll
+2023-06-06 09:31:52,581 [INFO] successfully extracted data from api
+2023-06-06 09:31:52,597 [INFO] successfully parsed api output, found 63 many records
+2023-06-06 09:31:52,597 [INFO] successfully applied data transformation pipeline
+2023-06-06 09:31:53,029 [DEBUG] cmd: where.exe tbb.dll
 cwd: None
-06/06/2023 12:06:30 AM Adding TBB (C:\Users\write\AppData\Local\Programs\Python\Python310\lib\site-packages\prophet\stan_model\cmdstan-2.31.0\stan\lib\stan_math\lib\tbb) to PATH
-06/06/2023 12:06:30 AM Disabling weekly seasonality. Run prophet with weekly_seasonality=True to override this.
-06/06/2023 12:06:30 AM Disabling daily seasonality. Run prophet with daily_seasonality=True to override this.
-06/06/2023 12:06:30 AM input tempfile: C:\Users\write\AppData\Local\Temp\tmp83m29p06\c_64g5wc.json
-06/06/2023 12:06:30 AM input tempfile: C:\Users\write\AppData\Local\Temp\tmp83m29p06\p5gdiqg9.json
-06/06/2023 12:06:30 AM idx 0
-06/06/2023 12:06:30 AM running CmdStan, num_threads: None
-06/06/2023 12:06:30 AM CmdStan args: ['C:\\Users\\write\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\prophet\\stan_model\\prophet_model.bin', 'random', 'seed=71132', 'data', 'file=C:\\Users\\write\\AppData\\Local\\Temp\\tmp83m29p06\\c_64g5wc.json', 'init=C:\\Users\\write\\AppData\\Local\\Temp\\tmp83m29p06\\p5gdiqg9.json', 'output', 'file=C:\\Users\\write\\AppData\\Local\\Temp\\tmp83m29p06\\prophet_modelwildx7rk\\prophet_model-20230606000630.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
-06/06/2023 12:06:30 AM Chain [1] start processing
-06/06/2023 12:06:30 AM Chain [1] done processing
+2023-06-06 09:31:53,119 [DEBUG] Adding TBB (C:\Users\write\AppData\Local\Programs\Python\Python310\lib\site-packages\prophet\stan_model\cmdstan-2.31.0\stan\lib\stan_math\lib\tbb) to PATH
+2023-06-06 09:31:53,119 [INFO] Disabling weekly seasonality. Run prophet with weekly_seasonality=True to override this.
+2023-06-06 09:31:53,119 [INFO] Disabling daily seasonality. Run prophet with daily_seasonality=True to override this.
+2023-06-06 09:31:53,152 [DEBUG] input tempfile: C:\Users\write\AppData\Local\Temp\tmp72h22xlj\gxkhn304.json
+2023-06-06 09:31:53,168 [DEBUG] input tempfile: C:\Users\write\AppData\Local\Temp\tmp72h22xlj\duzdsl44.json
+2023-06-06 09:31:53,178 [DEBUG] idx 0
+2023-06-06 09:31:53,178 [DEBUG] running CmdStan, num_threads: None
+2023-06-06 09:31:53,178 [DEBUG] CmdStan args: ['C:\\Users\\write\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\prophet\\stan_model\\prophet_model.bin', 'random', 'seed=41308', 'data', 'file=C:\\Users\\write\\AppData\\Local\\Temp\\tmp72h22xlj\\gxkhn304.json', 'init=C:\\Users\\write\\AppData\\Local\\Temp\\tmp72h22xlj\\duzdsl44.json', 'output', 'file=C:\\Users\\write\\AppData\\Local\\Temp\\tmp72h22xlj\\prophet_modelkloe_184\\prophet_model-20230606093153.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2023-06-06 09:31:53,178 [INFO] Chain [1] start processing
+2023-06-06 09:31:53,588 [INFO] Chain [1] done processing
