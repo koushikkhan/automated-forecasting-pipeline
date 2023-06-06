@@ -15,115 +15,7 @@ from pmdarima.arima import ARIMA
 from pmdarima.arima import auto_arima, ADFTest
 
 
-def train_test_split(data, response_col, training_perc = 0.8):
-    df_with_response_col = data[[response_col]]
-    split_idx = round(len(df_with_response_col) * training_perc)
-    train = df_with_response_col.iloc[:split_idx]
-    test = df_with_response_col.iloc[split_idx:]
-    return df_with_response_col, train, test
-
-
-def visualize_train_test_split(train_df, test_df, path_to_save_fig, file_name):
-    fig, ax= plt.subplots(figsize=(14,10))
-    kws = dict(marker='o')
-    plt.plot(train_df, label = 'Train', **kws)
-    plt.plot(test_df, label = 'Test', **kws)
-    ax.legend(bbox_to_anchor=[1,1])
-    plt.savefig(os.path.join(path_to_save_fig, file_name))
-
-
-def get_best_arima_model(train_df, **kwargs):
-    arima_model = auto_arima(train_df, start_p=0, start_q=0, **kwargs)
-    return [arima_model.order, arima_model.seasonal_order]
-
-
-def fit_best_arima_model(data, best_model_params, path_to_save_model):
-    best_model = ARIMA(
-        order=best_model_params[0],
-        seasonal_order=best_model_params[1]
-    ).fit(data)
-
-    # save model
-    with open(os.path.join(path_to_save_model, 'arima.pkl'), 'wb') as pkl:
-        pickle.dump(best_model, pkl)
-
-    return best_model
-
-
-def visualize_model_diagnostics():
-    pass
-
-
-def get_forecast_in_dataframe(path_to_save_model, steps):
-    # load model
-    with open(os.path.join(path_to_save_model, 'arima.pkl'), 'rb') as pkl:
-        model = pickle.load(pkl)
-
-    preds, conf_int = model.predict(n_periods=steps, return_conf_int=True)
-    pred_df = pd.DataFrame({"pred":preds})
-    pred_df['lower'] = conf_int[:,0]
-    pred_df['upper'] = conf_int[:,1]
-    return pred_df
-
-
-def visualize_prediction(train_df, test_df, pred_df, title, path_to_save_fig, file_name):
-    fig,ax = plt.subplots(figsize=(14,10))
-    kws = dict(marker='o')
-    
-    ax.plot(train_df,label='Train',**kws)
-    ax.plot(test_df,label='Test',**kws)
-    ax.plot(pred_df['pred'], label='Prediction', ls='--',linewidth=3)
-
-    ax.fill_between(x=pred_df.index,y1=pred_df['lower'], y2=pred_df['upper'], alpha=0.3)
-    ax.set_title(title, fontsize=22)
-    ax.legend(loc='upper left')
-    fig.tight_layout()
-    
-    plt.savefig(os.path.join(path_to_save_fig, file_name))
-
-
-def generate_output(hist_df, forecast_df, path_to_save_op, file_name):
-    forecast_with_history_df = pd.concat([hist_df, forecast_df])
-
-    forecast_with_history_df.reset_index(inplace=True)
-    forecast_with_history_df.rename(columns={"index":"date"}, inplace=True)
-
-    forecast_with_history_df.to_csv(os.path.join(path_to_save_op, file_name), index=True)
-
-
-# visualization
-
-def plot_actual_vs_forecast(forecast_df, yhat_arima=False, yhat_prophet=False, yhat_ensemble=False, path_to_save=None):
-    # prepare data for visualization
-    data_viz = forecast_df.copy()
-    data_viz.set_index('ds', inplace=True)
-
-    # plot configurations
-    fig,ax = plt.subplots(figsize=(14,10))
-    kws = dict(marker='o', color='r')
-    ax.plot(data_viz['y'], label="actual", **kws)
-
-    # include series by choice
-    if yhat_arima:
-        ax.plot(data_viz['yhat_arima'], label='ARIMA', ls='--', linewidth=2)
-    
-    if yhat_prophet:
-        ax.plot(data_viz['yhat_prophet'], label='Prophet', ls='-.', linewidth=2)
-    
-    if yhat_ensemble:
-        ax.plot(data_viz['yhat_ensemble'], label='Ensemble', ls='solid', linewidth=2, color='k')
-
-    plt.grid()
-
-    ax.set_title("Actual vs Forecast Data", fontsize=18)
-    ax.legend(loc='upper left')
-    fig.tight_layout()
-
-    if path_to_save is not None:
-        fig2save = fig.get_figure()
-        fig2save.savefig(os.path.join(path_to_save, 'actual_vs_forecast_data.png'))
-
-
+##### Classes for developing models #####
 class ArimaModel:
     """
     Helper class to build ARIMA model using auto_arima  
@@ -152,8 +44,6 @@ class ArimaModel:
         if path_to_save is not None:
             with open(os.path.join(path_to_save, "auto_arima_best_model.pkl")) as pkl:
                 pkl.dump(self.auto_arima_model)
-
-        return self.auto_arima_model.summary()
 
     def build_model(self, path_to_save=None):
         if self.auto_arima_model is not None:
@@ -193,6 +83,12 @@ class ArimaModel:
         
         return final_df
     
+    def get_model_summary(self, auto_arima=False):
+        if auto_arima:
+            return self.auto_arima_model.summary()
+        else:
+            return self.best_model.summary()
+
 
 class ProphetModel:
     """
@@ -249,4 +145,64 @@ class ProphetModel:
         )
 
         return final_df
+    
 
+# generate visualizations & reports
+def combine_forecasts(conf, result_arima, result_prophet, path_to_save):
+    df_forecast_final = pd.merge(
+        result_arima,
+        result_prophet,
+        on=['ds', 'y'], 
+        how='inner'
+    )
+    df_forecast_final['yhat_ensemble'] = df_forecast_final[['yhat_arima', 'yhat_prophet']].mean(axis=1)
+    
+    if path_to_save is not None:
+        df_forecast_final.to_csv(
+            os.path.join(
+                path_to_save, 
+                f"forecast_table_{conf['api']['country_code']}_{conf['api']['indicator']}_hist_2022_fc_2030.csv"
+            ), index=False
+        )
+
+    return df_forecast_final
+
+##### utilities #####
+def compute_mape(forecast_table, actual_col, fc_col):
+    actuals = forecast_table[actual_col].values
+    fcs = forecast_table[fc_col].values
+
+    mape = np.nanmean(np.abs((actuals - fcs)/actuals)) * 100
+    return mape
+
+
+# visualization
+def plot_actual_vs_forecast(forecast_df, yhat_arima=False, yhat_prophet=False, yhat_ensemble=False, path_to_save=None):
+    # prepare data for visualization
+    data_viz = forecast_df.copy()
+    data_viz.set_index('ds', inplace=True)
+
+    # plot configurations
+    fig,ax = plt.subplots(figsize=(14,10))
+    kws = dict(marker='o', color='r')
+    ax.plot(data_viz['y'], label="actual", **kws)
+
+    # include series by choice
+    if yhat_arima:
+        ax.plot(data_viz['yhat_arima'], label='ARIMA', ls='--', linewidth=2)
+    
+    if yhat_prophet:
+        ax.plot(data_viz['yhat_prophet'], label='Prophet', ls='-.', linewidth=2)
+    
+    if yhat_ensemble:
+        ax.plot(data_viz['yhat_ensemble'], label='Ensemble', ls='solid', linewidth=2, color='k')
+
+    plt.grid()
+
+    ax.set_title("Actual vs Forecast Data", fontsize=18)
+    ax.legend(loc='upper left')
+    fig.tight_layout()
+
+    if path_to_save is not None:
+        fig2save = fig.get_figure()
+        fig2save.savefig(os.path.join(path_to_save, 'actual_vs_forecast_data.png'))
