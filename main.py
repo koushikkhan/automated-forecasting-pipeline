@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 
+"""
+Driver Program for the application
+
+author : Koushik Khan
+"""
 
 import os
 import pandas as pd
@@ -55,7 +60,7 @@ def main():
             sort_by_date=True, 
             set_date_idx=True
         )
-        logging.info(f"successfully parsed api output, found {data_ts.shape[0]} many records")
+        logging.info(f"successfully parsed api output, found {data_ts.shape[0]} records")
 
         # save data
         # data_ts.to_csv(os.path.join(output_dir, "data", f'api_extract_{conf["api"]["country_code"]}_{conf["api"]["indicator"]}.csv'), index=False)
