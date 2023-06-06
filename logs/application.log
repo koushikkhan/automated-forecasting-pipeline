@@ -1,0 +1,188 @@
+2023-06-06 09:31:52,581 [INFO] successfully extracted data from api
+2023-06-06 09:31:52,597 [INFO] successfully parsed api output, found 63 many records
+2023-06-06 09:31:52,597 [INFO] successfully applied data transformation pipeline
+2023-06-06 09:31:53,029 [DEBUG] cmd: where.exe tbb.dll
+cwd: None
+2023-06-06 09:31:53,119 [DEBUG] Adding TBB (C:\Users\write\AppData\Local\Programs\Python\Python310\lib\site-packages\prophet\stan_model\cmdstan-2.31.0\stan\lib\stan_math\lib\tbb) to PATH
+2023-06-06 09:31:53,119 [INFO] Disabling weekly seasonality. Run prophet with weekly_seasonality=True to override this.
+2023-06-06 09:31:53,119 [INFO] Disabling daily seasonality. Run prophet with daily_seasonality=True to override this.
+2023-06-06 09:31:53,152 [DEBUG] input tempfile: C:\Users\write\AppData\Local\Temp\tmp72h22xlj\gxkhn304.json
+2023-06-06 09:31:53,168 [DEBUG] input tempfile: C:\Users\write\AppData\Local\Temp\tmp72h22xlj\duzdsl44.json
+2023-06-06 09:31:53,178 [DEBUG] idx 0
+2023-06-06 09:31:53,178 [DEBUG] running CmdStan, num_threads: None
+2023-06-06 09:31:53,178 [DEBUG] CmdStan args: ['C:\\Users\\write\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\prophet\\stan_model\\prophet_model.bin', 'random', 'seed=41308', 'data', 'file=C:\\Users\\write\\AppData\\Local\\Temp\\tmp72h22xlj\\gxkhn304.json', 'init=C:\\Users\\write\\AppData\\Local\\Temp\\tmp72h22xlj\\duzdsl44.json', 'output', 'file=C:\\Users\\write\\AppData\\Local\\Temp\\tmp72h22xlj\\prophet_modelkloe_184\\prophet_model-20230606093153.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2023-06-06 09:31:53,178 [INFO] Chain [1] start processing
+2023-06-06 09:31:53,588 [INFO] Chain [1] done processing
+2023-06-06 12:31:03,445 [INFO] successfully extracted data from api
+2023-06-06 12:31:03,448 [INFO] successfully parsed api output, found 63 many records
+2023-06-06 12:31:03,464 [INFO] successfully applied data transformation pipeline
+2023-06-06 12:31:03,464 [INFO] initializing ARIMA model
+2023-06-06 12:31:03,613 [INFO] started building ARIMA model
+2023-06-06 12:31:03,613 [INFO] printing summary for auto_arima on console
+2023-06-06 12:31:03,616 [INFO] starting modelling by arima
+2023-06-06 12:31:03,640 [INFO] built best ARIMA model successfully
+2023-06-06 12:31:03,641 [INFO] printing summary for best model on console
+2023-06-06 12:31:03,654 [INFO] started compiling forecast data
+2023-06-06 12:31:03,654 [INFO] forecasts have been compiled successfully
+2023-06-06 12:31:03,654 [INFO] initializing forecasting model using FbProphet
+2023-06-06 12:31:03,654 [INFO] starting modelling by fbprophet
+2023-06-06 12:31:03,688 [DEBUG] cmd: where.exe tbb.dll
+cwd: None
+2023-06-06 12:31:04,254 [DEBUG] Adding TBB (C:\Users\koushik.khan\.pyenv\pyenv-win\versions\3.10.10\lib\site-packages\prophet\stan_model\cmdstan-2.31.0\stan\lib\stan_math\lib\tbb) to PATH
+2023-06-06 12:31:04,256 [INFO] Disabling weekly seasonality. Run prophet with weekly_seasonality=True to override this.
+2023-06-06 12:31:04,259 [INFO] Disabling daily seasonality. Run prophet with daily_seasonality=True to override this.
+2023-06-06 12:31:04,270 [DEBUG] input tempfile: C:\Users\KOUSHI~1.KHA\AppData\Local\Temp\tmpxhmcx_x_\klkq3ed0.json
+2023-06-06 12:31:04,275 [DEBUG] input tempfile: C:\Users\KOUSHI~1.KHA\AppData\Local\Temp\tmpxhmcx_x_\22tcqxjh.json
+2023-06-06 12:31:04,281 [DEBUG] idx 0
+2023-06-06 12:31:04,281 [DEBUG] running CmdStan, num_threads: None
+2023-06-06 12:31:04,281 [DEBUG] CmdStan args: ['C:\\Users\\koushik.khan\\.pyenv\\pyenv-win\\versions\\3.10.10\\Lib\\site-packages\\prophet\\stan_model\\prophet_model.bin', 'random', 'seed=80013', 'data', 'file=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmpxhmcx_x_\\klkq3ed0.json', 'init=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmpxhmcx_x_\\22tcqxjh.json', 'output', 'file=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmpxhmcx_x_\\prophet_modelulajjpc7\\prophet_model-20230606123104.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2023-06-06 12:31:04,282 [INFO] Chain [1] start processing
+2023-06-06 12:31:04,734 [INFO] Chain [1] done processing
+2023-06-06 12:31:04,738 [INFO] built prophet model successfully
+2023-06-06 12:31:04,818 [INFO] forecast data are compiled
+2023-06-06 12:31:05,315 [INFO] visualization on actual vs forecast comparison is saved into output/figures
+2023-06-06 12:35:00,643 [INFO] successfully extracted data from api
+2023-06-06 12:35:00,646 [INFO] successfully parsed api output, found 63 many records
+2023-06-06 12:35:00,663 [INFO] successfully applied data transformation
+2023-06-06 12:35:00,664 [INFO] initializing ARIMA model
+2023-06-06 12:35:00,814 [INFO] started building ARIMA model
+2023-06-06 12:35:00,814 [INFO] printing summary for auto_arima on console
+2023-06-06 12:35:00,820 [INFO] starting modelling by arima
+2023-06-06 12:35:00,837 [INFO] built best ARIMA model successfully
+2023-06-06 12:35:00,837 [INFO] printing summary for best model on console
+2023-06-06 12:35:00,850 [INFO] started compiling forecast data
+2023-06-06 12:35:00,850 [INFO] forecasts have been compiled successfully
+2023-06-06 12:35:00,858 [INFO] initializing forecasting model using FbProphet
+2023-06-06 12:35:00,858 [INFO] starting modelling by fbprophet
+2023-06-06 12:35:00,883 [DEBUG] cmd: where.exe tbb.dll
+cwd: None
+2023-06-06 12:35:01,041 [DEBUG] Adding TBB (C:\Users\koushik.khan\.pyenv\pyenv-win\versions\3.10.10\lib\site-packages\prophet\stan_model\cmdstan-2.31.0\stan\lib\stan_math\lib\tbb) to PATH
+2023-06-06 12:35:01,043 [INFO] Disabling weekly seasonality. Run prophet with weekly_seasonality=True to override this.
+2023-06-06 12:35:01,043 [INFO] Disabling daily seasonality. Run prophet with daily_seasonality=True to override this.
+2023-06-06 12:35:01,050 [DEBUG] input tempfile: C:\Users\KOUSHI~1.KHA\AppData\Local\Temp\tmpsucfg44q\a5acmpwo.json
+2023-06-06 12:35:01,066 [DEBUG] input tempfile: C:\Users\KOUSHI~1.KHA\AppData\Local\Temp\tmpsucfg44q\anv1ywkg.json
+2023-06-06 12:35:01,070 [DEBUG] idx 0
+2023-06-06 12:35:01,070 [DEBUG] running CmdStan, num_threads: None
+2023-06-06 12:35:01,070 [DEBUG] CmdStan args: ['C:\\Users\\koushik.khan\\.pyenv\\pyenv-win\\versions\\3.10.10\\Lib\\site-packages\\prophet\\stan_model\\prophet_model.bin', 'random', 'seed=82695', 'data', 'file=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmpsucfg44q\\a5acmpwo.json', 'init=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmpsucfg44q\\anv1ywkg.json', 'output', 'file=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmpsucfg44q\\prophet_model6yotk6ql\\prophet_model-20230606123501.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2023-06-06 12:35:01,071 [INFO] Chain [1] start processing
+2023-06-06 12:35:01,437 [INFO] Chain [1] done processing
+2023-06-06 12:35:01,442 [INFO] built prophet model successfully
+2023-06-06 12:35:01,515 [INFO] forecast data are compiled
+2023-06-06 12:35:01,934 [INFO] visualization on actual vs forecast comparison is saved into output/figures
+2023-06-06 13:18:23,144 [INFO] successfully extracted data from api
+2023-06-06 13:18:23,160 [INFO] successfully parsed api output, found 63 many records
+2023-06-06 13:18:23,160 [INFO] successfully applied data transformation
+2023-06-06 13:18:23,160 [INFO] initializing ARIMA model
+2023-06-06 13:18:23,307 [INFO] started building ARIMA model
+2023-06-06 13:18:23,307 [INFO] printing summary for auto_arima on console
+2023-06-06 13:18:23,312 [INFO] starting modelling by arima
+2023-06-06 13:18:23,329 [INFO] built best ARIMA model successfully
+2023-06-06 13:18:23,329 [INFO] printing summary for best model on console
+2023-06-06 13:18:23,340 [INFO] forecasts have been compiled successfully for ARIMA
+2023-06-06 13:18:23,340 [INFO] mape for ARIMA reported as 9.9189 %
+2023-06-06 13:18:23,348 [INFO] initializing forecasting model using FbProphet
+2023-06-06 13:18:23,348 [INFO] starting modelling by fbprophet
+2023-06-06 13:18:23,357 [DEBUG] cmd: where.exe tbb.dll
+cwd: None
+2023-06-06 13:18:23,477 [DEBUG] Adding TBB (C:\Users\koushik.khan\.pyenv\pyenv-win\versions\3.10.10\lib\site-packages\prophet\stan_model\cmdstan-2.31.0\stan\lib\stan_math\lib\tbb) to PATH
+2023-06-06 13:18:23,479 [INFO] Disabling weekly seasonality. Run prophet with weekly_seasonality=True to override this.
+2023-06-06 13:18:23,479 [INFO] Disabling daily seasonality. Run prophet with daily_seasonality=True to override this.
+2023-06-06 13:18:23,484 [DEBUG] input tempfile: C:\Users\KOUSHI~1.KHA\AppData\Local\Temp\tmp2256kdo3\ll9h924p.json
+2023-06-06 13:18:23,498 [DEBUG] input tempfile: C:\Users\KOUSHI~1.KHA\AppData\Local\Temp\tmp2256kdo3\pcw88fwr.json
+2023-06-06 13:18:23,504 [DEBUG] idx 0
+2023-06-06 13:18:23,504 [DEBUG] running CmdStan, num_threads: None
+2023-06-06 13:18:23,504 [DEBUG] CmdStan args: ['C:\\Users\\koushik.khan\\.pyenv\\pyenv-win\\versions\\3.10.10\\Lib\\site-packages\\prophet\\stan_model\\prophet_model.bin', 'random', 'seed=68282', 'data', 'file=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmp2256kdo3\\ll9h924p.json', 'init=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmp2256kdo3\\pcw88fwr.json', 'output', 'file=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmp2256kdo3\\prophet_model9sv9ydi8\\prophet_model-20230606131823.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2023-06-06 13:18:23,505 [INFO] Chain [1] start processing
+2023-06-06 13:18:23,867 [INFO] Chain [1] done processing
+2023-06-06 13:18:23,870 [INFO] built prophet model successfully
+2023-06-06 13:18:23,929 [INFO] forecasts have been compiled successfully for prophet
+2023-06-06 13:18:23,929 [INFO] mape for prophet model reported as 9.9189 %
+2023-06-06 13:18:23,942 [INFO] forecast data are compiled
+2023-06-06 13:18:24,371 [INFO] visualization on actual vs forecast comparison is saved into output/figures
+2023-06-06 13:18:50,846 [INFO] successfully extracted data from api
+2023-06-06 13:18:50,853 [INFO] successfully parsed api output, found 63 many records
+2023-06-06 13:18:50,853 [INFO] successfully applied data transformation
+2023-06-06 13:18:50,853 [INFO] initializing ARIMA model
+2023-06-06 13:18:51,019 [INFO] started building ARIMA model
+2023-06-06 13:18:51,019 [INFO] printing summary for auto_arima on console
+2023-06-06 13:18:51,025 [INFO] starting modelling by arima
+2023-06-06 13:18:51,041 [INFO] built best ARIMA model successfully
+2023-06-06 13:18:51,041 [INFO] printing summary for best model on console
+2023-06-06 13:18:51,054 [INFO] forecasts have been compiled successfully for ARIMA
+2023-06-06 13:18:51,054 [INFO] mape for ARIMA reported as 9.9189 %
+2023-06-06 13:18:51,060 [INFO] initializing forecasting model using FbProphet
+2023-06-06 13:18:51,060 [INFO] starting modelling by fbprophet
+2023-06-06 13:18:51,080 [DEBUG] cmd: where.exe tbb.dll
+cwd: None
+2023-06-06 13:18:51,195 [DEBUG] Adding TBB (C:\Users\koushik.khan\.pyenv\pyenv-win\versions\3.10.10\lib\site-packages\prophet\stan_model\cmdstan-2.31.0\stan\lib\stan_math\lib\tbb) to PATH
+2023-06-06 13:18:51,199 [INFO] Disabling weekly seasonality. Run prophet with weekly_seasonality=True to override this.
+2023-06-06 13:18:51,199 [INFO] Disabling daily seasonality. Run prophet with daily_seasonality=True to override this.
+2023-06-06 13:18:51,205 [DEBUG] input tempfile: C:\Users\KOUSHI~1.KHA\AppData\Local\Temp\tmpefkgjk4e\npxlzv0g.json
+2023-06-06 13:18:51,224 [DEBUG] input tempfile: C:\Users\KOUSHI~1.KHA\AppData\Local\Temp\tmpefkgjk4e\c9fjeqv0.json
+2023-06-06 13:18:51,229 [DEBUG] idx 0
+2023-06-06 13:18:51,231 [DEBUG] running CmdStan, num_threads: None
+2023-06-06 13:18:51,231 [DEBUG] CmdStan args: ['C:\\Users\\koushik.khan\\.pyenv\\pyenv-win\\versions\\3.10.10\\Lib\\site-packages\\prophet\\stan_model\\prophet_model.bin', 'random', 'seed=31320', 'data', 'file=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmpefkgjk4e\\npxlzv0g.json', 'init=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmpefkgjk4e\\c9fjeqv0.json', 'output', 'file=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmpefkgjk4e\\prophet_modelhq4_3y3f\\prophet_model-20230606131851.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2023-06-06 13:18:51,231 [INFO] Chain [1] start processing
+2023-06-06 13:18:51,592 [INFO] Chain [1] done processing
+2023-06-06 13:18:51,595 [INFO] built prophet model successfully
+2023-06-06 13:18:51,663 [INFO] forecasts have been compiled successfully for prophet
+2023-06-06 13:19:52,248 [INFO] successfully extracted data from api
+2023-06-06 13:19:52,250 [INFO] successfully parsed api output, found 63 many records
+2023-06-06 13:19:52,262 [INFO] successfully applied data transformation
+2023-06-06 13:19:52,263 [INFO] initializing ARIMA model
+2023-06-06 13:19:52,406 [INFO] started building ARIMA model
+2023-06-06 13:19:52,406 [INFO] printing summary for auto_arima on console
+2023-06-06 13:19:52,412 [INFO] starting modelling by arima
+2023-06-06 13:19:52,428 [INFO] built best ARIMA model successfully
+2023-06-06 13:19:52,428 [INFO] printing summary for best model on console
+2023-06-06 13:19:52,444 [INFO] forecasts have been compiled successfully for ARIMA
+2023-06-06 13:19:52,444 [INFO] mape for ARIMA reported as 9.9189 %
+2023-06-06 13:19:52,448 [INFO] initializing forecasting model using FbProphet
+2023-06-06 13:19:52,448 [INFO] starting modelling by fbprophet
+2023-06-06 13:19:52,460 [DEBUG] cmd: where.exe tbb.dll
+cwd: None
+2023-06-06 13:19:52,579 [DEBUG] Adding TBB (C:\Users\koushik.khan\.pyenv\pyenv-win\versions\3.10.10\lib\site-packages\prophet\stan_model\cmdstan-2.31.0\stan\lib\stan_math\lib\tbb) to PATH
+2023-06-06 13:19:52,582 [INFO] Disabling weekly seasonality. Run prophet with weekly_seasonality=True to override this.
+2023-06-06 13:19:52,582 [INFO] Disabling daily seasonality. Run prophet with daily_seasonality=True to override this.
+2023-06-06 13:19:52,587 [DEBUG] input tempfile: C:\Users\KOUSHI~1.KHA\AppData\Local\Temp\tmpqihc1dsd\uo7zvmn8.json
+2023-06-06 13:19:52,597 [DEBUG] input tempfile: C:\Users\KOUSHI~1.KHA\AppData\Local\Temp\tmpqihc1dsd\9zg5ikw_.json
+2023-06-06 13:19:52,603 [DEBUG] idx 0
+2023-06-06 13:19:52,603 [DEBUG] running CmdStan, num_threads: None
+2023-06-06 13:19:52,603 [DEBUG] CmdStan args: ['C:\\Users\\koushik.khan\\.pyenv\\pyenv-win\\versions\\3.10.10\\Lib\\site-packages\\prophet\\stan_model\\prophet_model.bin', 'random', 'seed=85973', 'data', 'file=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmpqihc1dsd\\uo7zvmn8.json', 'init=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmpqihc1dsd\\9zg5ikw_.json', 'output', 'file=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmpqihc1dsd\\prophet_model3rryb0ll\\prophet_model-20230606131952.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2023-06-06 13:19:52,604 [INFO] Chain [1] start processing
+2023-06-06 13:19:52,967 [INFO] Chain [1] done processing
+2023-06-06 13:19:52,972 [INFO] built prophet model successfully
+2023-06-06 13:19:53,028 [INFO] forecasts have been compiled successfully for prophet
+2023-06-06 13:19:53,037 [INFO] mape for prophet model reported as 18.7676 %
+2023-06-06 13:19:53,043 [INFO] forecast data are compiled
+2023-06-06 13:19:53,474 [INFO] visualization on actual vs forecast comparison is saved into output/figures
+2023-06-06 13:35:32,394 [INFO] successfully extracted data from api
+2023-06-06 13:35:32,397 [INFO] successfully parsed api output, found 63 many records
+2023-06-06 13:35:32,397 [INFO] successfully applied data transformation
+2023-06-06 13:35:32,405 [INFO] initializing ARIMA model
+2023-06-06 13:35:32,560 [INFO] started building ARIMA model
+2023-06-06 13:35:32,560 [INFO] printing summary for auto_arima on console
+2023-06-06 13:35:32,565 [INFO] starting modelling by arima
+2023-06-06 13:35:32,587 [INFO] built best ARIMA model successfully
+2023-06-06 13:35:32,587 [INFO] printing summary for best model on console
+2023-06-06 13:35:32,600 [INFO] forecasts have been compiled successfully for ARIMA
+2023-06-06 13:35:32,600 [INFO] mape for ARIMA reported as 9.9189 %
+2023-06-06 13:35:32,609 [INFO] initializing forecasting model using FbProphet
+2023-06-06 13:35:32,609 [INFO] starting modelling by fbprophet
+2023-06-06 13:35:32,632 [DEBUG] cmd: where.exe tbb.dll
+cwd: None
+2023-06-06 13:35:32,750 [DEBUG] Adding TBB (C:\Users\koushik.khan\.pyenv\pyenv-win\versions\3.10.10\lib\site-packages\prophet\stan_model\cmdstan-2.31.0\stan\lib\stan_math\lib\tbb) to PATH
+2023-06-06 13:35:32,752 [INFO] Disabling weekly seasonality. Run prophet with weekly_seasonality=True to override this.
+2023-06-06 13:35:32,752 [INFO] Disabling daily seasonality. Run prophet with daily_seasonality=True to override this.
+2023-06-06 13:35:32,771 [DEBUG] input tempfile: C:\Users\KOUSHI~1.KHA\AppData\Local\Temp\tmpckl2gxia\cnyi21ma.json
+2023-06-06 13:35:32,779 [DEBUG] input tempfile: C:\Users\KOUSHI~1.KHA\AppData\Local\Temp\tmpckl2gxia\wg8v0at6.json
+2023-06-06 13:35:32,785 [DEBUG] idx 0
+2023-06-06 13:35:32,785 [DEBUG] running CmdStan, num_threads: None
+2023-06-06 13:35:32,785 [DEBUG] CmdStan args: ['C:\\Users\\koushik.khan\\.pyenv\\pyenv-win\\versions\\3.10.10\\Lib\\site-packages\\prophet\\stan_model\\prophet_model.bin', 'random', 'seed=58128', 'data', 'file=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmpckl2gxia\\cnyi21ma.json', 'init=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmpckl2gxia\\wg8v0at6.json', 'output', 'file=C:\\Users\\KOUSHI~1.KHA\\AppData\\Local\\Temp\\tmpckl2gxia\\prophet_modelgiiilhha\\prophet_model-20230606133532.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2023-06-06 13:35:32,786 [INFO] Chain [1] start processing
+2023-06-06 13:35:33,438 [INFO] Chain [1] done processing
+2023-06-06 13:35:33,443 [INFO] built prophet model successfully
+2023-06-06 13:35:33,498 [INFO] forecasts have been compiled successfully for prophet
+2023-06-06 13:35:33,511 [INFO] mape for prophet model reported as 18.7676 %
+2023-06-06 13:35:33,514 [INFO] forecasts are combined
+2023-06-06 13:35:33,939 [INFO] visualization on actual vs forecast comparison is saved into output/figures
