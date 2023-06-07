@@ -1,14 +1,14 @@
 # Introduction
 
-Hi there,
+Hi there :wave:,
 
 Welcome to the README of the repository [automated-forecasting-pipeline](https://github.com/koushikkhan/automated-forecasting-pipeline).
 
-In this project, I have tried to focus on developing an automated pipeline for developing time series models based macro economic data provided by the World Bank.
+In this project, I have tried to focus on developing an automated pipeline to build time series models based macro economic data provided by the World Bank.
 
-It is true that time series analysis is something which is more of an activity of art than science. So, completely automating the modelling process may not be possible, but we can automate many of the surrounding things we do and reduce the manual effort as mush as possible.
+It is true that time series analysis is something which is more of an activity of art than science. So, completely automating the modelling process may not be possible, but we can automate many of the surrounding things that we do and reduce the manual effort as mush as possible.
 
-In the subsequent sections, I will help you to understand the codebase and play with it. 
+In the subsequent sections, I will help you to understand the codebase and use it. 
 
 # Setting up the codebase
 
